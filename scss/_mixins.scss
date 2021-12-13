@@ -1,0 +1,77 @@
+@mixin fAwesomeStyle {
+ content: "";
+ position: absolute;
+ display: block;
+ font-family: "Font Awesome 5 Pro", "Font Awesome 5 Free";
+}
+@mixin flexCenterBetween {
+  display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+@mixin flexCenterColumnBetween {
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+}
+@mixin flexBetween {
+ display: flex;
+ justify-content: space-between;
+}
+@mixin flexColumnCenter {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+@mixin flexColumnAround {
+ display: flex;
+ justify-content: space-around;
+ flex-direction: column;
+}
+@mixin flexCenter {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+@mixin flexColumnCenterJusify {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+}
+@mixin flexCenterJustify {
+ display: flex;
+ justify-content: center;
+}
+@mixin flexCenterAround {
+ justify-content: space-around;
+ align-items: center;
+ display: flex;
+}
+@mixin flexColumnEvenly {
+ display: flex;
+ justify-content: space-evenly;
+ flex-direction: column;
+ align-items: center;
+}
+@mixin columnEvenly {
+ display: flex;
+ justify-content: space-evenly;
+ flex-direction: column;
+}
+@mixin flexColumn {
+ display: flex;
+ flex-direction: column;
+}
+@mixin flexAlighnCenter {
+ display: flex;
+ align-items: center;
+}
+@mixin flexColumnAlighnCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@mixin columnDir {
+ flex-direction: column
+}

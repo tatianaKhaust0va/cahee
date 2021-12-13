@@ -1,0 +1,863 @@
+@use "_import";
+@use "_mixins";
+@use "_variables" as var;
+body {
+ font-size: 17px;
+ color: var.$dark;
+ font-family: 'Raleway-Light', sans-serif;
+}
+.container {
+ max-width: 1170px;
+ margin: 0 auto;
+ display: block;
+ padding: 0 15px;
+ box-sizing: content-box;
+}
+.wrapper {
+ height: 100%;
+ @include mixins.flexColumn;
+ position: relative;
+}
+
+.header {
+  position: relative;
+  z-index: 5;
+  &.fixed {
+    transition: all .2s ease-in;
+    position: fixed;
+    display: block;
+    width: 100%;
+    background-color: var.$lightColor;
+    box-shadow: 1px 5px var.$darkTransparent;
+    z-index: 999;
+
+  }
+ &-nav {
+  height: 100px;
+  width: 100%;
+  @include mixins.flexCenterBetween;
+  &__logo {
+    font-family: 'Pacifico Regular';
+    font-size: 50px;
+  }
+   
+   &-burger {
+     display: none;
+     @media screen and (max-width: 720px) and (min-width: 319px) {
+       width: 40px;
+       height: 40px;
+       @include mixins.columnEvenly;
+       position: relative;
+       &.active {
+         .burger {
+           &__icon {
+              &:nth-child(2) {
+                transform: rotate(45deg);
+                position: absolute;
+                top: 50%;
+              }
+              &:first-child {
+                transform: rotate(-45deg);
+              }
+              &:last-child {
+                display: none;
+              }
+           } 
+         }
+          }
+       .burger {
+          &.active {
+           &__icon {
+              &:nth-child(2) {
+                display: none;
+              }
+              &:first-child {
+                 transform: rotate(45deg);
+              }
+           } 
+          }
+         &__icon {
+           width: 30px;
+           height: 3px;
+           background-color: var.$dark;
+         
+         }
+       }
+   }
+   }
+  &-menu {
+   display: flex;
+   @media screen and (max-width: 720px) and (min-width: 319px) {
+     display: none;
+     &.active {
+      @include mixins.flexCenterColumnBetween;
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      background-color: var.$lightGray;
+      overflow: auto;
+      left: 0;
+      text-align: center;
+      z-index: 20;
+      .menu {
+        &__item {
+          margin-top: 30px;
+          &:last-child {
+            margin-bottom: 30px;
+          }
+        }
+      }
+
+     }
+   }
+   .menu {
+    &__item {
+     margin-right: 30px;
+  }
+  &__link {
+   text-transform: uppercase;
+   font-family: 'Raleway Bold';
+   font-size: 16px;
+   position: relative;
+   &:hover, &:focus, &:active, &:visited {
+    &:after {
+     position: absolute;
+     content: "";
+     top: 0;
+     left: 50%;
+     transform: translateX(-50%);
+     width: 100%;
+     height: 3px;
+     background: var.$btnColor;
+     margin-top: -10px;
+     transition: all .3s ease-in;
+    }
+   }
+  }
+  }
+ }
+}
+
+}
+.main {
+ flex: 1 1 auto;
+ input[type="email"],
+ input[type="text"],
+ input[type="tel"], 
+ textarea{
+  padding-left: 14px;
+ }
+ &--title {
+   font-size: 88px;
+   font-family: 'Raleway Bold';
+   text-transform: capitalize;
+    @media screen and (max-width: 349px) and (min-width: 319px) {
+     font-size: 62px;
+    }
+ }
+ &--txt-pos {
+    text-align: center;
+    max-width: 630px;
+    width: 100%;
+    margin: 0 auto;
+    line-height: 1.5;
+    padding-bottom: 50px;
+ }
+ &--pos {
+    height: 212px;
+    @include mixins.flexColumnCenter;
+ }
+ &--btn {
+   width: 200px;
+   height: 54px;
+   border: none;
+   outline: none;
+   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+   color: var.$light;
+   @include mixins.flexCenter;
+   text-transform: uppercase;
+   cursor: pointer;
+   &:hover {
+     background: var.$light!important;
+   }
+ }
+ &-fresh {
+   height: 100vh;
+   @media screen and (min-width: 768px) {
+     height: auto;
+   }
+   position: relative;
+   margin-top: -100px;
+   width: 100%;
+   z-index: 1;
+   &::before {
+     content: "";
+     position: absolute;
+     top: 0;
+     left: 0;
+     background: url(../img/fresh-section/bg.png) no-repeat 100% 100% / cover;
+     width: 100%;
+     height: 100%;
+     background-position-y: 22%;
+     background-position-x: right;
+     z-index: -1;
+     @media screen and (max-width: 767.98px) and (min-width: 425px) {
+       background-position-x: 0%;
+     }
+     @media screen and (max-width: 424px) and ( min-width: 375px) {
+       background-position-x: 8%;
+     }
+     @media screen and (max-width: 374px) and ( min-width: 319px) {
+       background-position-x: 13%;
+     }
+   }
+   &-content {
+     height: 100vh;
+     @media screen and (min-width: 768px) {
+       height: auto;
+     }
+     @media screen and (max-width: 425px) and (min-width: 319px) {
+       height: 100%;
+       padding-top: 50px;
+     }
+     @include mixins.flexColumnCenterJusify;
+     .fresh {
+       &-offer {
+          @media screen and (min-width: 768px) {
+            margin-top: 100px;
+          }
+         max-width: 370px;
+         width: 100%;
+         &__title {
+           font-size: 60px;
+           font-family: 'Raleway Heavy';
+           @media screen and (max-width: 375px) and (min-width: 319px) {
+             line-height: 0.8;
+           }
+           @media screen and (max-width: 425px) and (min-width: 319px) {
+             line-height: 0.8;
+             font-size: 58px;
+             margin-top: 100px;
+           }
+         }
+         &__desc {
+            @media screen and (max-width: 375px) and (min-width: 319px) {
+             margin: 20px 0;
+           }
+           margin: 40px 0;
+           line-height: 1.6;
+           text-align: justify;
+         }
+         &__btn {
+           background-color: var.$btnColor;
+           &:hover {
+             border: 3px solid var.$btnColor;
+             background: none;
+             color: var.$btnColor;
+           }
+         }
+       }
+       &-icon {
+         @media screen and (min-width: 768px) {
+        height: 300px;
+        @include mixins.flexCenterJustify;
+        }
+        @media screen and (max-width: 452px) and (min-width: 319px) {
+          display: none;
+        }
+        &__item {
+          position: relative;
+          &::before {
+            @include mixins.fAwesomeStyle;
+            content: "\f8cd";
+            font-size: 45px;
+            left: 50%;
+            bottom: 15%;
+            @media screen and (max-width: 600px) and (min-width: 319px) {
+            font-size: 30px;
+          }
+          }
+          &:hover {
+            color: var.$btnColor;
+          }
+        }
+       }
+     }
+   }
+ }
+ &-about {
+   background-color: var.$turquoise;
+   &-content{
+     height: 700px;
+     @include mixins.flexCenterBetween;
+     @media screen and (max-width: 768px) and (min-width: 319px) {
+       @include mixins.columnDir;
+     }
+     .about {
+       &__img {
+         position: relative;
+         height: 585px;
+         max-width: 585px;
+         width: 100%;
+         &::after {
+           position: absolute;
+           content: "";
+           width: 100%;
+           height: 100%;
+           background: url(../img/about-section/cup.png) no-repeat 100% 100%;
+           background-size: contain;
+           background-position: center;
+         }
+       }
+       &-info {
+         max-width: 520px;
+         width: 100%;
+         color: var.$light;
+         &__title {
+           @media screen and (max-width: 424px) and (min-width: 350px) {
+             font-size: 70px;
+           }
+         }
+         &__desc {
+           margin-top: 20px;
+           line-height: 1.5;
+           &:last-child {
+             @media screen and (max-width: 768px) and (min-width: 319px) {
+               padding-bottom: 40px;
+             }
+           }
+         }
+       }
+     }
+   }
+ }
+ &-services {
+   background: var.$blue;
+   &-content {
+     height: 100vh;
+     @include mixins.flexCenterAround;
+     flex-direction: row-reverse;
+     @media screen and (max-width: 598px) and (min-width: 319px) {
+       @include mixins.columnDir;
+       height: 100%;
+     }
+     .services {
+       &-img-block {
+         position: relative;
+         max-width: 540px;
+         @media screen and (max-width: 598px) and (min-width: 319px) {
+            height: 300px;
+            @include mixins.flexCenter;
+          }
+         width: 100%;
+         max-height: 540px;
+         height: 100%;
+         &::after {
+           content: "";
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background: url(../img/services-section/tomatos.png) no-repeat 100% 100%;
+           background-size: contain;
+           @media screen and (max-width: 598px) and (min-width: 319px) {
+            background-size: 50%;
+          }
+         }
+         &__title {
+           @media screen and (max-width: 768px) and (min-width: 599px) {
+             left: 0;
+             transform: rotate(90deg);
+             font-size: 70px;
+           }
+           @media screen and (max-width: 357px) and (min-width: 319px){
+             font-size: 54px;
+           }
+            position: absolute;
+            z-index: 20;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var.$light;
+         }
+        }
+        &-info {
+          @include mixins.flexColumnEvenly;
+          height: 460px;
+          
+          &__item {
+            justify-content: space-between;
+            height: 98px;
+            width: 400px;
+            @media screen and (max-width: 425px) and (min-width: 319px) {
+              width: 290px;
+            }
+            font-family: 'Raleway Bold';
+            background: var.$light;
+            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+            @include mixins.flexAlighnCenter;
+            padding-left: 40px;
+            cursor: pointer;
+            &:hover {
+            box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
+            }
+            span {
+              position: relative;
+              height: 100%;
+              width: 40%;
+              &::after {
+                content: "";
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100px;
+                height: 100%;
+                border-left: 1px solid var.$gray;
+              }
+            }
+            &:first-child {
+              span {
+                &::after {
+                  background-position-x: right;
+                  background: url(../img/services-section/icons/bash.png) no-repeat center;
+                }
+              }
+            }
+            &:nth-child(2) {
+              span {
+                &::after {
+                  background-position-x: right;
+                  background: url(../img/services-section/icons/hand.png) no-repeat center;
+                }
+              }
+            }
+            &:nth-child(3) {
+              span {
+                &::after {
+                  background-position-x: right;
+                  background: url(../img/services-section/icons/globe.png) no-repeat center;
+                }
+              }
+            }
+            &:last-child {
+              span {
+                &::after {
+                  background-position-x: right;
+                  background: url(../img/services-section/icons/carrot.png) no-repeat center;
+                }
+              }
+            }
+          }
+        }
+     }
+   }
+ }
+ &-gallery {
+   background-color: var.$yellow;
+   &-content {
+     .gallery {
+       &-info {
+         &__title{
+           height: 200px;
+           width: 100%;
+           @include mixins.flexCenter;
+         }
+       }
+       &-img-column {
+         display: grid;
+         grid-template-columns: 1fr 1fr 1fr 1fr;
+         grid-template-rows: 1fr 1fr;
+         @media screen and (max-width: 767px) and (min-width: 319px) {
+         grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+         }
+         grid-gap: 20px;
+         .img {
+           &__item {
+             width: 100%;
+             height: 100%;
+             box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+             object-fit: cover;
+             @media screen and (max-width: 767px) and (min-width: 319px) {
+               grid-column: 1/6!important; 
+             }
+             &:first-child {
+               grid-column: 1/4;
+               grid-row: 1/3;
+               @media screen and (max-width: 767px) and (min-width: 319px) {
+                 grid-row: 1;
+               }
+              }
+            &:nth-child(2) {
+              @media screen and (max-width: 767px) and (min-width: 319px) {
+               grid-row: 2;             
+               }
+            }
+            &:nth-child(3) {
+              @media screen and (max-width: 767px) and (min-width: 319px) {
+                grid-row: 3;             
+             }
+            }
+            &:nth-child(4) {
+              grid-column: 1/3;
+              grid-row: 3/5;
+              @media screen and (max-width: 767px) and (min-width: 319px) {
+              grid-row: 4;
+              } 
+            }
+            &:last-child {
+              grid-column: 3/5;
+              grid-row: 3/5;
+              @media screen and (max-width: 767px) and (min-width: 319px) {
+              grid-row: 5;
+              }               
+            }
+           }
+         }
+       }
+       &-btn {
+         &__item {
+           background-color: var.$lightBlue;
+           &:hover {
+             color: var.$lightBlue;
+           }
+         }
+       }
+     }
+   }
+ }
+ &-subscribe {
+   width: 100%;
+   height: auto;
+   position: relative;
+   &__img {
+     position: absolute;
+     top: 0;
+     right: 0;
+     max-width: 665px;
+     width: 100%;
+     height: 100%;
+     background: url(../img/subscribe-section/bg2.png) no-repeat 100% 100%;
+     background-size: cover;
+     background-position-y: center;
+     z-index: -1;
+   }
+   &-content {
+     height: 500px;
+     @include mixins.flexColumnCenterJusify;
+     max-width: 800px;
+     width: 100%;
+    }
+    .subscribe {
+      &-info {
+       background-color: var.$grayTransparent;
+       max-width: 570px;
+       width: 100%;
+      &__title {
+        font-size: 40px;
+        @media screen and (max-width: 334px) and (min-width: 319px) {
+          font-size: 36px;
+        }
+      }
+      &__desc {
+        margin: 27px 0;
+        line-height: 1.6;
+      }
+     }
+     &-form {
+       @include mixins.flexBetween;
+       @media screen and (max-width: 768px) and (min-width: 319px) {
+         @include mixins.columnDir;
+       }
+       &__input {
+         max-width: 570px;
+         width: 100%;
+         height: 54px;
+         border: 1px solid var.$dark;
+         outline: none;
+        }
+        &__btn {
+          @media screen and (max-width: 768px) and (min-width: 319px) {
+          margin-top: 40px;
+          }
+          background-color: rgb(150, 185, 44);
+          &:hover {
+            color: rgb(150, 185, 44);
+          }
+        }
+      }
+      
+     }
+ }
+ &-blog {
+   background-color: var.$violet;
+   color: var.$light;
+   &-content {
+     .blog {
+       &-cards {
+         position: relative;
+         grid-gap: 30px;
+         display: grid;
+         grid-template-columns: 1fr 1fr 1fr;
+         @media screen and (max-width: 768px) and (min-width: 319px) {
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr 1fr 1fr;
+          overflow: hidden;
+          grid-gap: 60px;
+        }
+         &-item {
+           display: grid;
+           overflow: hidden;
+           position: relative;
+           grid-template-columns: 1fr;
+           &::after {
+                 position: absolute;
+                 content: "";
+                 width: 100%;
+                 height: 100%;
+                 display: block;
+                 left: 0;
+                 bottom: 0;
+                 z-index: 1;
+                 background: rgb(0,0,0);
+                 background: linear-gradient(360deg, rgba(0,0,0,0.9) 0%, rgba(255,255,255,0) 40%);
+                }
+                &:hover {
+                  transform: scale(1.1);
+                  transition: transform .2s ease-in-out;
+                }
+           .card {
+             &__img {
+               grid-row-start: 1;
+               grid-row-end: 3;
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+               &:nth-child(2) {
+                 object-position: -100px;
+               }
+             }
+             &-info {
+               position: absolute;
+               left: 0;
+               top: 0;
+               z-index: 9;
+               &--pos {
+                 @include mixins.flexCenterColumnBetween;
+                 padding: 15px;
+                 height: 100%;
+               }
+               &__date {
+                 position: relative;
+                 left: 15px;
+                 top: 15px;
+                 width: 60px;
+                 height: 60px;
+                 overflow: hidden;
+                 flex-wrap: wrap;
+                 @include mixins.flexCenter;
+                 font-size: 32px;
+                 font-family: 'Raleway Bold';
+                 &::after {
+                   content: "";
+                   position: absolute;
+                   top: 0;
+                   left: 0;
+                   width: 100%;
+                   height: 100%;
+                   background: rgba(38, 38, 38, 0.5);
+                   z-index: -1;
+                 }
+                 span {
+                   font-size: 21px;
+                   font-family: 'Raleway Heavy';
+                 }
+               }
+               &-article {
+                 .article {
+                   &__title {
+                     padding-top: 10px;
+                     font-size: 2vw;
+                      @media screen and (max-width: 768px) and (min-width: 319px) {
+                      font-size: 20px;
+                      }
+                   } 
+                   &__desc {
+                     font-size: 13px;
+                     margin-top: 15px;
+                   }
+                 }
+               }
+             }
+
+           }
+         }
+        }
+       &-btn {
+       &__item {
+         background-color: var.$btnColor;
+         &:hover {
+           color: var.$btnColor;
+         }
+       }   
+       }
+      }
+  }
+}
+&-contact {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    content: "";
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/contact-section/bg.png)no-repeat 100% 100% / cover;
+    z-index: -1;
+  }
+  &-content {
+  height: 868px;
+   @media screen and (max-width: 768px) and (min-width: 319px) {
+    height: 100%;
+   }
+    @include mixins.flexColumnAround;
+    .contact {
+      &-info {
+        &__title {
+          margin-top: 80px;
+        }
+        &__desc {
+          max-width: 346px;
+          text-align: center;
+          margin-top: 20px;
+        }
+      }
+      &-connect {
+        @include mixins.flexBetween;
+         @media screen and (max-width: 768px) and (min-width: 319px) {
+          flex-direction: column-reverse;
+          height: 100%;
+        }
+        height: 440px;
+        &-address {
+          padding-left: 15px;
+          @media screen and (max-width: 768px) and (min-width: 319px) {
+           @include mixins.flexColumnAlighnCenter;
+            padding-left: 0;
+          }
+          .address {
+            &__title {
+              @media screen and (max-width: 768px) and (min-width: 319px) {
+                &:first-child {
+                  padding-top: 50px;
+                }
+               }
+              font-size: 17px;
+              margin-top: 25px;
+             }
+             &__desc {
+              font-size: 20px;
+               @media screen and (max-width: 768px) and (min-width: 319px) {
+                  text-align: center;
+                  &:last-child {
+                  padding-bottom: 30px;  
+                  }
+                }
+            }
+          }
+        }
+        &-form {
+          @include mixins.flexColumn;
+          .form {
+            &__input,
+            &__message {
+              outline: none;
+              border: none;
+              margin-bottom: 15px;
+              color: var.$light;
+              background: rgba(0, 196, 196, 0.5);
+              &::-webkit-input-placeholder {
+               color: var.$light;
+               font-size: 15px;
+               font-family: 'Raleway Bold';
+             }
+             &:-webkit-autofill{
+              -webkit-text-fill-color: var.$light !important;
+              -webkit-box-shadow: 0 0 0 1000px rgba(0, 196, 196, 1) inset !important;
+              font-family: 'Raleway Bold';
+             }
+             &:focus, &:active, &:focus-visible {
+               border-left: 5px solid var.$darkBlue;
+               font-family: 'Raleway Bold';
+               color: var.$light;
+               background: rgba(0, 196, 196, 1);
+             }
+            }
+            &__input {
+              @media screen and (max-width: 768px) and (min-width: 319px) {
+                width: 100%;
+               }
+             width: 500px;
+             height: 51px; 
+            }
+            &__message {
+             height: 250px!important;
+             padding-top: 18px;
+            }
+            &__btn {
+             width: 150px;
+             height: 45px;
+              @media screen and (max-width: 768px) and (min-width: 319px) {
+                margin-bottom: 30px;
+              }
+             background: var.$btnColor;
+             &:hover {
+               color: var.$btnColor;
+             }
+            }
+          }
+        }
+      }
+     }
+  }
+}
+}
+.footer {
+  background-color: var.$dark;
+  &-copy {
+    @media screen and (max-width: 610px) and (min-width: 319px) {
+      height: 150px;
+      @include mixins.columnEvenly;
+    }
+   @include mixins.flexCenterBetween;
+    height: 90px;
+    color: var.$gray;
+    &__logo {
+    font-family: 'Pacifico Regular';
+    font-size: 25px;
+    }
+    &__desc {
+      &:first-child {
+        position: relative;
+        padding-left: 20px;
+        &::before {
+          @include mixins.fAwesomeStyle;
+          content: '\f1f9';
+          left: 0;
+          font-weight: 300;
+        }
+      }
+      &:last-child {
+        span {
+          color: red;
+          font-family: 'Raleway Bold';
+        }
+      }
+    }
+  }
+}
