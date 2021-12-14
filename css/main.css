@@ -405,6 +405,9 @@ template {
   height: 220px;
   overflow-y: scroll;
 }
+.body.landscape .main-services-content {
+  height: auto;
+}
 .body.landscape .main-fresh {
   height: auto;
 }
