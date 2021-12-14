@@ -395,10 +395,30 @@ template {
   font-weight: normal;
   src: local("Raleway Light"), url("../fonts/Raleway-Light.woff") format("woff");
 }
-body {
+.body {
   font-size: 17px;
   color: #262626;
   font-family: "Raleway-Light", sans-serif;
+}
+.body.landscape .header-nav-menu.menu.active {
+  justify-content: baseline;
+  height: 220px;
+  overflow-y: scroll;
+}
+.body.landscape .main-fresh {
+  height: auto;
+}
+.body.landscape .main-fresh-content {
+  height: auto;
+}
+.body.landscape .main-fresh-content .fresh-offer {
+  padding: 90px 0 80px 0;
+}
+.body.landscape .main-fresh-content .fresh-icon {
+  display: none;
+}
+.body.locked {
+  overflow: hidden;
 }
 
 .container {

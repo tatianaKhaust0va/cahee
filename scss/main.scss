@@ -1,10 +1,32 @@
 @use "_import";
 @use "_mixins";
 @use "_variables" as var;
-body {
+.body {
  font-size: 17px;
  color: var.$dark;
  font-family: 'Raleway-Light', sans-serif;
+ &.landscape {
+   .header-nav-menu.menu.active {
+     justify-content: baseline;
+     height: 220px;
+     overflow-y: scroll;
+   }
+   .main-fresh {
+     height: auto;
+     &-content {
+       height: auto;
+       .fresh-offer {
+         padding: 90px 0 80px 0;
+       }
+       .fresh-icon {
+         display: none;
+       } 
+     }
+   }
+ }
+ &.locked {
+   overflow: hidden;
+ }
 }
 .container {
  max-width: 1170px;

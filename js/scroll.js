@@ -24,3 +24,4 @@ $(document).scroll(() => {
   $('header').removeClass('fixed');
  }
 });
+
