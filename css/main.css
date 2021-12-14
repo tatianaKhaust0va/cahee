@@ -408,7 +408,7 @@ template {
 .body.landscape .main-services-content {
   height: auto;
 }
-.body.landscape .services-img-block {
+.body.landscape .main-services-content .services-img-block {
   height: 300px;
 }
 .body.landscape .main-fresh {
